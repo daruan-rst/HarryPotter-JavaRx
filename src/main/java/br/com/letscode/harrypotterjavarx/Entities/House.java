@@ -7,9 +7,11 @@ import java.util.List;
 @Data
 public class House {
 
+    private String id;
     private String name;
-    private String patronum;
-    private String ghost;
-    private List<String> values;
+    private String animal;
+    private String founder;
+    private List<Object> values;
+
 
 }
