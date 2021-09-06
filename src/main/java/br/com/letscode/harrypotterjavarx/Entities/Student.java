@@ -1,13 +1,12 @@
 package br.com.letscode.harrypotterjavarx.Entities;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "student")
@@ -18,8 +17,15 @@ import javax.persistence.Table;
 public class Student {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     private String name;
-    private String houseName;
 
+    @SerializedName("sorting-hat-choice")
+    private String houseId;
+
+    public Student(String name, House house) {
+        this.name = name;
+        this.houseId = house.getId();
+    }
 }
